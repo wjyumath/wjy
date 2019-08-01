@@ -1,23 +1,47 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+
+<div>
+  <mt-header  title="I am WhailFill"></mt-header>
+  <router-view/>
+  <mt-tabbar v-model="selected">
+  <mt-tab-item id="Home">
+    <img slot="icon" src="./assets/images/shouye.png">
+    首页
+  </mt-tab-item>
+  <mt-tab-item id="Movie">
+    <img slot="icon" src="./assets/images/movie.png">
+    视频
+  </mt-tab-item>
+  <mt-tab-item id="Cart">
+    <img slot="icon" src="./assets/images/cart.png">
+    购物车
+  </mt-tab-item>
+  <mt-tab-item id="Like">
+    <img slot="icon" src="./assets/images/like.png">
+    喜欢
+  </mt-tab-item>
+</mt-tabbar>
+</div>
 </template>
 
 <script>
-export default {
-  name: 'App'
+export default{
+  data(){
+    return{
+      selected:''
+    }
+  },
+  watch:{
+    selected(newV,oleV){
+      debugger;
+      this.$router.push({
+        
+        name: newV
+      })
+    }
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
