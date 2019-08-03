@@ -7,7 +7,9 @@ import Like from '@/components/Like'
 import NewsList from '@/components/News/NewsList'
 import NovelList from '@/components/novel/NovelList'
 import Details from '@/components/novel/Details'
-
+import Login from '@/components/User/Login'
+import Regeister from '@/components/User/Regeister'
+import UserDetail from '@/components/User/UserDetail'
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +54,21 @@ export default new Router({
             path: '/novel/Details',
             name: 'Details',
             component: Details
+        },
+        {
+            path: '/User/Login',
+            name: 'Login',
+            component: Login
+        },
+        {
+            path: '/User/Regeister',
+            name: 'Regeister',
+            component: Regeister
+        },
+        {
+            path: '/User/UserDetail',
+            name: 'UserDetail',
+            component: UserDetail
         },
 
     ]
