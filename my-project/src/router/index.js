@@ -14,7 +14,7 @@ Vue.use(Router)
 
 export default new Router({
     routes: [{
-            path: '/Home/Home',
+            path: '/',
             redirect: { name: 'Home' }
         },
         {
@@ -44,27 +44,31 @@ export default new Router({
             component: NewsList
         },
 
-        // 小说列表
+        // 音乐列表
         {
             path: '/novel/list',
             name: 'novel.list',
             component: NovelList
         },
+        // 音乐详情
         {
             path: '/novel/Details',
             name: 'Details',
             component: Details
         },
+        // 登录页面
         {
             path: '/User/Login',
             name: 'Login',
             component: Login
         },
+        // 注册页面
         {
             path: '/User/Regeister',
             name: 'Regeister',
             component: Regeister
         },
+        // 注册详情
         {
             path: '/User/UserDetail',
             name: 'UserDetail',
