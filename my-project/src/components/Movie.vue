@@ -110,6 +110,7 @@ export default {
   text-decoration-line: none;
 }
 .videocontent div {
+  width: 330px;
   font-size: 18px;
   color: black;
 }

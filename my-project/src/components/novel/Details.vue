@@ -4,7 +4,7 @@
     <router-view/>
     <div class="news">
             <ul>
-                <li  v-for="(content,index) in  contents" :key="index" >
+                <li  v-for="(content,index) in  contentList" :key="index" >
                     <!-- <div > -->
                         <a href="#">
                             <img :src="content.pic_small" alt="">
@@ -32,27 +32,27 @@ export default {
   data(){
       return{
           contentList:'',
-          index:0,
+          type:0,
           contents:''
       }
   },
     created(){
         // debugger;
-        this.index = this.$route.query.index
-        console.log(this.index)
+        this.type = this.$route.query.type
+        console.log(this.type)
        this.$axios({
             method:'get',
-            url:'https://api.apiopen.top/musicRankings'
+            url:'https://api.apiopen.top/musicRankingsDetails?type='+this.type
         }).then(res=>{
             
             this.contentList=res.data.result
             console.log(this.contentList)
-            for(var i=0;i<this.contentList.length;i++){
-                if(this.index==i){
-                   this.contents=this.contentList[i].content
-                   console.log(this.contents)
-                }
-            }
+            // for(var i=0;i<this.contentList.length;i++){
+            //     if(this.index==i){
+            //        this.contents=this.contentList[i].content
+            //        console.log(this.contents)
+            //     }
+            // }
             
         }).catch(function(err){
             console.log(err)

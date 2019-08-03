@@ -4,7 +4,7 @@
         <div class="music" >
             <ul>
                 <li v-for="(music,index) in musicList" :key="index" >
-                    <a href="#" @click="handel(index)">
+                    <a href="#" @click="handel(music.type)">
                         <img :src="music.bg_pic" alt="">
                         <div class="musiccontent">
                             <div>{{music.name}}</div>
@@ -42,10 +42,9 @@ export default{
    },
   methods:{
       handel(music){
-          console.log(music)
           this.$router.push({
           path: 'Details/',
-          query: {index: music}
+          query: {type: music}
         })
       }
   }
