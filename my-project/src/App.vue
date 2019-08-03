@@ -1,10 +1,10 @@
 <template>
 
 <div>
-  <mt-header  title="I am WhailFill"></mt-header>
+  <mt-header class="header" title="I am WhailFill"></mt-header>
   <router-view/>
   <mt-tabbar v-model="selected">
-  <mt-tab-item id="Home">
+  <mt-tab-item  id="Home" fixed>
     <img slot="icon" src="./assets/images/shouye.png">
     首页
   </mt-tab-item>
@@ -33,9 +33,7 @@ export default{
   },
   watch:{
     selected(newV,oleV){
-      debugger;
       this.$router.push({
-        
         name: newV
       })
     }
@@ -43,5 +41,13 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
+.header{
+  /* position: fixed; */
+  /* margin-top: -10px; */
+  width: 100%;
+}
+.mint-tabbar{
+  position: fixed;
+}
 </style>
