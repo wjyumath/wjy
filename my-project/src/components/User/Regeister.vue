@@ -3,12 +3,12 @@
     <nav-bar title="我是注册"></nav-bar>
     <div>
       <div class="bg"></div>
+      
       <div class="reg">
-        <!-- <input type="text" > -->
         <mt-field label="手机号" placeholder="请输入手机号" type="tel" v-model="phone"></mt-field>
         <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
         <mt-field label="确认密码" placeholder="请再次输入密码" type="password" v-model="repassword"></mt-field>
-        <button @click="gonext(phone,password)" >下一步</button>
+         <mt-button type="primary" @click="gonext(phone,password)" size="large">下一步</mt-button>
       </div>
     </div>
   </div>
@@ -24,34 +24,33 @@ export default {
       repassword: ""
     };
   },
-  methods:{
-      gonext(phone,mima){
+  methods: {
+    gonext(phone, mima) {
+      //1 .手机号校验
+      var tel = /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+      var myPhone = this.phone.trim();
+      console.log(myPhone);
+      if (myPhone == "") {
+        alert("请输入手机号");
+        return;
+      }
+      if (!tel.test(myPhone)) {
+        alert("手机号格式错误");
+        return;
+      }
 
-          //1 .手机号校验
-          var tel = /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
-          var myPhone=this.phone.trim();
-          console.log(myPhone);
-          if(myPhone==""){
-              alert('请输入手机号')
-              return;
-          }
-          if(!tel.test(myPhone)){
-              alert('手机号格式错误')
-              return;
-          }
-
-        // 2. 密码与再次输入密码内容验证
-        var myPassword=this.password.trim();
-        var myRepassword=this.repassword.trim();
-        if(myPassword!=myRepassword){
-            alert('密码输入不一致');
-            return;
-        }
-       this.$router.push({
-          path: '../UserDetail/',
-          query: {tel: phone,password:mima}
-        })
-    },
+      // 2. 密码与再次输入密码内容验证
+      var myPassword = this.password.trim();
+      var myRepassword = this.repassword.trim();
+      if (myPassword != myRepassword) {
+        alert("密码输入不一致");
+        return;
+      }
+      this.$router.push({
+        path: "../UserDetail/",
+        query: { tel: phone, password: mima }
+      });
+    }
   }
 };
 </script>
@@ -77,4 +76,5 @@ export default {
   right: 0;
   margin: auto;
 }
+
 </style>
