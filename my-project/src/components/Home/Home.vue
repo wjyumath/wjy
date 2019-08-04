@@ -1,8 +1,8 @@
 <template>
   <div id="home">
      <mt-swipe class="mint-swipe" :auto="2000" >
-        <mt-swipe-item><img src="../../assets/images/11.jpg" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../../assets/images/33.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../../assets/images/22.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../../assets/images/22.jpg" alt=""></mt-swipe-item>
         <mt-swipe-item><img src="../../assets/images/22.jpg" alt=""></mt-swipe-item>
     </mt-swipe>
     <router-view/>
@@ -41,6 +41,7 @@ export default {
 <style>
 .mint-swipe{
   height: 200px;
+  width: 100%;
 }
 
 /* my-li span{
