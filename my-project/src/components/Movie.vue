@@ -4,6 +4,7 @@
     <div class="video">
       <ul>
         <li v-for="(video,index) in videoList" :key="index">
+          <!-- 视频播放窗口 -->
           <div class="test_two_box" v-on:click="initVideo(index)">
             <video :id="'myVideo'+index" class="video-js">
               <source
@@ -12,28 +13,36 @@
               />
             </video>
           </div>
-          <a href="#" @click="handel(id)">
-            <img :src="video.data.icon" alt />
-            <div class="videocontent">
-              <div>{{video.data.description}}</div>
-              <div>{{video.data.title}}</div>
-            </div>
-          </a>
+          <img :src="video.data.icon" />
+          <div class="videocontent">
+            <div>{{video.data.description}}</div>
+            <div>{{video.data.title}}</div>
+            <img id="fx" src="../assets/images/fenxiang.png" @click="actionSheet(video.data)" />
+          </div>
         </li>
       </ul>
+      <mt-popup v-model="popupVisible" position="bottom" popup-transition="popup-fade">
+        <div id="share" class="social-share" disabled="diandian"
+            data-sites= "qq,wechat,weibo,qzone"
+            :data-title= "111"
+            @click="btn($event)">
+        </div>
+      </mt-popup>
     </div>
     <router-view />
   </div>
 </template>
 
-<script>
+
+<script >
 export default {
   name: "Movie",
   data() {
     return {
-      videoList: ""
-      // videoSrc:
-      //   "https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4"
+      videoList: "",
+      popupVisible: false,
+      index:'',
+      fenxiang:{}
     };
   },
   created() {
@@ -49,17 +58,10 @@ export default {
         console.log(err);
       });
   },
-  // mounted() {
-  //   this.initVideo();
-  // },
   methods: {
-    // playVideo() {
-    //   var vdo = document.getElementById("videoPlay");
-    //   vdo.play();
-    // }
     initVideo(index) {
       //初始化视频方法
-      let myPlayer = this.$video('myVideo'+index, {
+      let myPlayer = this.$video("myVideo" + index, {
         //确定播放器是否具有用户可以与之交互的控件。没有控件，启动视频播放的唯一方法是使用autoplay属性或通过Player API。
         controls: true,
         //自动播放属性,muted:静音播放
@@ -71,6 +73,16 @@ export default {
         //设置视频播放器的显示高度（以像素为单位）
         height: "200px"
       });
+    },
+    actionSheet(data) {
+      this.popupVisible = true;
+      this.fenxiang=data
+    },
+    btn(event){
+      console.log(event.currentTarget);
+      var myDom = event.currentTarget;
+      myDom.setAttribute('data-title',this.fenxiang.title);
+      console.log(myDom);
     }
   }
 };
@@ -78,21 +90,15 @@ export default {
 
 <style>
 .video ul {
+  width: 100%;
   margin-right: 30px;
   padding-left: 20px;
 }
-
-/* .test_two_box video {
-  width: 375px;
-  height: 200px;
-  margin: 0 auto;
-} */
-.video-js{
+.video-js {
   width: 330px;
   height: 200px;
 }
 .video li {
-  /* margin: 0; */
   list-style: none;
   width: 375px;
   height: 350px;
@@ -101,7 +107,6 @@ export default {
 .video li img {
   width: 100px;
   height: 120px;
-  /* background-color: brown; */
   float: left;
   margin-right: 0px;
   margin: 5px 5px;
@@ -119,4 +124,15 @@ export default {
   color: darkgray;
   float: left;
 }
+#fx {
+  width: 40px;
+  height: 40px;
+}
+#share {
+  width: 414px;
+  font-size: 18px;
+  color: #333;
+  background-color: #fff;
+}
+
 </style>

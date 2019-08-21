@@ -1,26 +1,17 @@
 <template>
   <div id="newslist">
     <nav-bar title="新闻列表"></nav-bar>
-    <!-- <mt-navbar v-model="selected">
-            <mt-tab-item id="1">科技</mt-tab-item>
-            <mt-tab-item id="2">财经</mt-tab-item>
-            <mt-tab-item id="3">汽车</mt-tab-item>
-    </mt-navbar>-->
-    <mt-loadmore :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
+    <!-- <mt-loadmore :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
       <ul>
-        <!-- <li v-for="item in list">{{ item }}</li> -->
         <li v-for="(newlist,index) in newsList" :key="index">
           <a href="#">
             <img :src="newlist.picInfo.url" alt />
             <div class="content">
               <span>{{newlist.title}}</span>
               <p>{{newlist.digest}}......</p>
-              <!-- <span></span> -->
               <div class="time">
                 <div class="p1">来源:{{newlist.source}}</div>
                 <div class="p2">发表时间:{{newlist.ptime}}</div>
-                <!-- <p >来源:{{newlist.source}}</p>
-                <p >发表时间:{{newlist.ptime}}</p>-->
               </div>
             </div>
           </a>
@@ -30,8 +21,8 @@
         <span v-show="topStatus !== 'loading'" :class="{ 'rotate': topStatus === 'drop' }">↓</span>
         <span v-show="topStatus === 'loading'">狗兵洋...</span>
       </div>
-    </mt-loadmore>
-    <!-- <div class="news">
+    </mt-loadmore> -->
+    <div class="news">
       <ul>
         <li v-for="(newlist,index) in newsList" :key="index">
           <a href="#">
@@ -47,7 +38,7 @@
           </a>
         </li>
       </ul>
-    </div>-->
+    </div>
     <router-view />
   </div>
 </template>
@@ -113,6 +104,7 @@ export default {
   height: 40px;
   background-color: brown;
   float: left;
+  padding-left: 50px;
   margin-right: 20px;
   margin: 5px 5px;
 }

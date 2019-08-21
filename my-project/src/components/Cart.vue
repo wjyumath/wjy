@@ -1,15 +1,25 @@
 <template>
-  <div id="cart">
-      我是gouwuche
-    <router-view/>
+  <div id="app">
+    <h3 class="title">{{ msg }}</h3>
+    <div class="amap-wrapper">
+      <el-amap class="amap-box" :vid="'amap-vue'"></el-amap>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Cart'
+  data () {
+    return {
+      msg: 'vue-amap向你问好！'
+    }
+  }
 }
 </script>
 
 <style>
+.amap-wrapper {
+  width: 375px;
+  height:  600px;
+}
 </style>

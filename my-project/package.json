@@ -18,7 +18,11 @@
         "mint-ui": "^2.2.13",
         "video.js": "^7.6.0",
         "vue": "^2.5.2",
-        "vue-router": "^3.0.1"
+        "vue-amap": "^0.5.10",
+        "vue-router": "^3.0.1",
+        "vue-social-share": "0.0.3",
+        "vue-social-sharing": "^2.4.6",
+        "weixin-js-sdk": "^1.4.0-test"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",

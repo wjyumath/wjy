@@ -13,6 +13,7 @@ import UserDetail from '@/components/User/UserDetail'
 Vue.use(Router)
 
 export default new Router({
+
     routes: [{
             path: '/',
             redirect: { name: 'Home' }
