@@ -35,19 +35,32 @@ import 'vue-social-share/dist/client.css';
 Vue.use(SocialSharing);
 // 引入amap组件
 import VueAMap from 'vue-amap';
-import { AMapManager } from 'vue-amap';
+import AMapManager from 'vue-amap';
+import { lazyAMapApiLoaderInstance } from 'vue-amap';
+Vue.config.productionTip = false;
 Vue.use(VueAMap);
 
-import storage from './localstorage.js'
-
-Vue.config.productionTip = false
-
 VueAMap.initAMapApiLoader({
-    key: '653fc73e2e81cf78e56f7d6be2e44cd1',
-    plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
-    // 默认高德 sdk 版本为 1.4.4
+    key: 'db8838665adc82c34fbff686f02bb0e5',
+    plugin: ['AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.Geolocation'],
+    uiVersion: '1.0', // ui库版本，不配置不加载,
     v: '1.4.4'
 });
+
+// lazyAMapApiLoaderInstance.load().then(() => {
+//     // your code ...
+//     this.map = new AMap.Map('amapContainer', {
+//         center: new AMap.LngLat(121.59996, 31.197646)
+//     });
+// });
+import storage from './localstorage.js'
+
+// 引入echarts
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts
+
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
